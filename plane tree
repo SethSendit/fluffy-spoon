@@ -1,0 +1,151 @@
+#include <iostream>
+using namespace std;
+
+int main() 
+{
+  char menuOption;
+// Specification B3 - Date
+  time_t now = time(0);
+  char *date = ctime(& now);
+  cout << "The current date is: " << date << "\n";
+  cout << "Please enter a letter to pick an option.\n";
+//  cout << "1. Communications Faliure\n";
+//  cout << "2. Engine Failure\n";
+//  cout << "3. In-Flight Icing\n";
+//  cout << "4. Quit\n";
+// Specification A1 - Alpha Menu
+  cout << "<C>ommunications Faliure\n";
+  cout << "<E>ngine Failure\n";
+  cout << "<I>n-Flight Icing\n";
+  cout << "<Q>uit\n";
+  cin >> menuOption;
+
+// Specification C1 - Communications Option
+  //if (menuOption == 1)
+  if (menuOption == 'c' || menuOption == 'C')
+  {
+    cout << "Switch to Alternate Radio\n";
+  }
+  // Specification C2 - Engine Failure Option
+  //else if (menuOption == 2)
+  else if (menuOption == 'e' || menuOption == 'E')
+  {
+    bool inputSelection;
+    cout << "For ALL question please use 1 for YES and 0 for NO. \n";
+    cout << "Are you airborne?\n";
+    cin >> inputSelection;
+    if (inputSelection == 0)
+    {
+      cout << "Have a drink and call a mechanic.\n";
+    }
+    else if (inputSelection == 1)
+    {
+      cout << "Is the eletrical system working?\n";
+      cin >> inputSelection;
+      if (inputSelection == 0)
+      {
+        cout << "Turn on the Master Switch.\n";
+      }
+      else if (inputSelection == 1)
+      {
+        cout << "Has the engine stopped running?\n";
+        cin >> inputSelection;
+        if (inputSelection == 0)
+        {
+          cout << "Is the outside air < 32 degrees?\n";
+          cin >> inputSelection;
+          if (inputSelection == 1)
+          {
+            cout << "Turn on the Carburator Heat\n";
+
+          }
+          else if (inputSelection == 0)
+          {
+            cout << "Switch to other fuel tank\n";
+
+          }
+        }
+        else if (inputSelection == 1)
+        {
+          cout << "Are you over moutains?\n";
+          cin >> inputSelection;
+          if (inputSelection == 0)
+          {
+            cout << "Are you over water?\n";
+            cin >> inputSelection;
+            if (inputSelection == 1)
+            {
+              cout << "Inflate your life vest, make emergency landing\n";
+            }
+            else if (inputSelection == 0)
+            {
+              cout << "Make an emergnecy landing on the road\n";
+            }
+          }
+          else if (inputSelection == 1)
+          {
+            cout << "Are you flying at night?\n";
+            cin >> inputSelection;
+            if (inputSelection == 0)
+            cout << "Make an emergency landing\n";
+          }
+          else if (inputSelection == 1)
+          cout << "Turn on the landing light and look out the window. Do you like what you see?\n";
+          cin >> inputSelection;
+          if (inputSelection == 1)
+          {
+            cout << "Make an emergency landing.\n";
+
+          }
+          else if (inputSelection == 0)
+          {
+            cout << "Turn off landing light\n";
+
+          }
+        }
+      }
+    }
+
+  }
+  // Specification C3 - In-Flight Icing Option
+  //else if (menuOption == 3)
+  if (menuOption == 'i' || menuOption == 'I')
+  {
+    float icyAmount;
+    cout << "How much ice is on the wings? Please enter the decimal number between 0mm and 10mm: \n";
+    cin >> icyAmount;
+    if (icyAmount < 1)
+    {
+      cout << "You should use 5% power to defrost wings.\n";
+    }
+    else if (icyAmount > 1 && icyAmount < 5)
+    {
+      cout << "You should use 20% peower to defrost wings.\n";
+    }
+    else if (icyAmount > 5.1 && icyAmount < 9)
+    {
+      cout << "You should use 65% power to defrost wings.\n";
+    }
+    else if (icyAmount > 9.1 && icyAmount < 10)
+    {
+      cout << "You should use 100% power to defrost wings.\n";
+    }
+    // Specification B2 - Icing Input Validation
+    else
+    {
+      cout << "Please try again and enter a vaild amount.";
+    }
+  }
+  //else if (menuOption == 4)
+  if (menuOption == 'Q' || menuOption == 'q')
+  {
+    cout << "Quitting...\n";
+  }
+  // Specification B1 - Menu Input Validation
+  //else if (menuOption < 0 || menuOption > 4)
+  // Specification A2 - Menu Input Validation
+  else if (menuOption != 'c'&&'C'&&'e'&&'E'&&'i'&&'I'&&'q'&&'Q')
+  {
+    cout << "Please enter a value on the menu. \n";
+  }
+}
